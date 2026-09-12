@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://q01vfct3jjle"]
+
+[ext_resource type="Script" uid="uid://cyditcb040pqk" path="res://player_stuff/player.gd" id="1_fp3om"]
+[ext_resource type="Texture2D" uid="uid://7ubcx81r3ow8" path="res://icon.svg" id="2_gcccv"]
+[ext_resource type="Script" uid="uid://bxdl6h5y6j8dk" path="res://player_stuff/straight_foward.gd" id="3_gcccv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ot6j1"]
+radius = 15.033297
+
+[node name="Timmy" type="Node2D" unique_id=1445521221]
+script = ExtResource("1_fp3om")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=846489101]
+texture = ExtResource("2_gcccv")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1606721880]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=453743991]
+shape = SubResource("CircleShape2D_ot6j1")
+
+[node name="shoot_scripts" type="Node" parent="." unique_id=916732153]
+
+[node name="shot_type_1" type="Node" parent="shoot_scripts" unique_id=1206529949]
+script = ExtResource("3_gcccv")
