@@ -5,4 +5,4 @@
 [node name="stage_1_act_1" type="Node2D" unique_id=1138670238]
 
 [node name="Timmy" parent="." unique_id=1445521221 instance=ExtResource("1_gxk06")]
-position = Vector2(470, 416)
+position = Vector2(119, 297)
