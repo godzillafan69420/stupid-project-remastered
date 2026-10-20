@@ -1,4 +1,5 @@
-extends Node2D
+extends Resource
+class_name player
 
 #stats
 
@@ -11,14 +12,6 @@ extends Node2D
 
 var current_speed = speed
 
-func _process(delta: float) -> void:
-	if Input.is_action_pressed("slow_down"):
-		current_speed = slowing_down_speed
-	else:
-		current_speed = speed
-	var directionX = Input.get_axis("left", "right")
-	var directionY = Input.get_axis("up", "down")
-		
-	position += Vector2(directionX, directionY).normalized() * current_speed *delta
-		
-	
+
+func _shoot():
+	var bullet = shot_type_1.instatiate()
