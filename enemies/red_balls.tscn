@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dop0k6jsow6yq"]
+
+[ext_resource type="Script" uid="uid://d16y8kt0h826a" path="res://scripts/bullet.gd" id="1_i8s11"]
+[ext_resource type="Texture2D" uid="uid://7ubcx81r3ow8" path="res://icon.svg" id="2_p5sea"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ot6j1"]
+
+[node name="red_balls" type="Area2D" unique_id=1954660282]
+script = ExtResource("1_i8s11")
+speed = 1000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1328706488]
+shape = SubResource("RectangleShape2D_ot6j1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1731650142]
+texture = ExtResource("2_p5sea")
