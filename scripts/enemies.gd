@@ -10,5 +10,8 @@ func _process(delta: float) -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player_bullet"):
+		if area.bullet_stats.destroy_on_impact:
+			area.queue_free()
 		queue_free()
+		
 	

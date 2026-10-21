@@ -8,6 +8,7 @@
 script = ExtResource("2_3t5r6")
 speed = 1000.0
 damage = 20.0
+destroy_on_impact = true
 metadata/_custom_type_script = "uid://br2rh1gqxr8tl"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ot6j1"]
@@ -21,3 +22,5 @@ shape = SubResource("RectangleShape2D_ot6j1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1731650142]
 texture = ExtResource("2_npb7w")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
