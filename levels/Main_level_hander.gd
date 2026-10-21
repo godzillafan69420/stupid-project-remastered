@@ -2,6 +2,9 @@ extends Node2D
 
 @export var enemy_pool: Array[PackedScene]
 @export var enemy_spawn_interval: float
+
+@export var boss_scene:PackedScene
+
 var enemy_spawner_timer: Timer
 
 func _ready() -> void:
@@ -20,3 +23,7 @@ func _spawn_enemies_on_random():
 
 func _on_enemy_spawn_interval_timeout() -> void:
 	_spawn_enemies_on_random()
+
+
+func _on_boss_timer_timeout() -> void:
+	pass # Replace with function body.

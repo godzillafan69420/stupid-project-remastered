@@ -10,9 +10,12 @@ enemy_pool = Array[PackedScene]([ExtResource("2_gx214")])
 enemy_spawn_interval = 0.5
 
 [node name="Timmy" parent="." unique_id=1445521221 instance=ExtResource("1_gxk06")]
-position = Vector2(119, 297)
+position = Vector2(346, 305)
 
 [node name="enemy_spawn_interval" type="Timer" parent="." unique_id=745071899]
 autostart = true
 
+[node name="Boss_timer" type="Timer" parent="." unique_id=33152996]
+
 [connection signal="timeout" from="enemy_spawn_interval" to="." method="_on_enemy_spawn_interval_timeout"]
+[connection signal="timeout" from="Boss_timer" to="." method="_on_boss_timer_timeout"]

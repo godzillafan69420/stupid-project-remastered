@@ -1,12 +1,11 @@
 extends Area2D
 
+@export var bullet_stats: bullet 
 
-@export var speed = 100
-@export var damage: float = 10
 
 var direction: Vector2
 func _process(delta: float) -> void:
-	position += direction.normalized() * speed * delta
+	position += direction.normalized() * bullet_stats.speed * delta
 	if position.y < -10:
 		queue_free()
 		

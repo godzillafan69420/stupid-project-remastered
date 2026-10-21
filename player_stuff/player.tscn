@@ -1,17 +1,24 @@
 [gd_scene format=3 uid="uid://q01vfct3jjle"]
 
 [ext_resource type="Script" uid="uid://tati153l58i" path="res://scripts/player.gd" id="1_fp3om"]
-[ext_resource type="PackedScene" uid="uid://cn2m6qcabaloy" path="res://player_stuff/knife.tscn" id="2_43wku"]
+[ext_resource type="Script" uid="uid://cj05r8lefthbf" path="res://custom_resources/player_resource.gd" id="2_43wku"]
 [ext_resource type="Texture2D" uid="uid://7ubcx81r3ow8" path="res://icon.svg" id="2_gcccv"]
+[ext_resource type="PackedScene" uid="uid://cn2m6qcabaloy" path="res://player_stuff/knife.tscn" id="3_43wku"]
+
+[sub_resource type="Resource" id="Resource_fp3om"]
+script = ExtResource("2_43wku")
+speed = 500
+slowing_down_speed = 100
+shot_type_1 = ExtResource("3_43wku")
+shot_time_1 = 0.1
+metadata/_custom_type_script = "uid://cj05r8lefthbf"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ot6j1"]
 radius = 6.0
 
 [node name="Timmy" type="Node2D" unique_id=1445521221]
 script = ExtResource("1_fp3om")
-shot_type_1 = ExtResource("2_43wku")
-shot_time_1 = 0.1
-shot_time_2 = 0.25
+player_stats = SubResource("Resource_fp3om")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=846489101]
 scale = Vector2(0.5, 0.5)
@@ -26,4 +33,5 @@ shape = SubResource("CircleShape2D_ot6j1")
 
 [node name="shoot interval" type="Timer" parent="." unique_id=1267233232 groups=["player_bullet"]]
 
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="shoot interval" to="." method="_on_shoot_interval_timeout"]

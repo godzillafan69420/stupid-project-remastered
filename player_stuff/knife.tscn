@@ -1,13 +1,20 @@
 [gd_scene format=3 uid="uid://cn2m6qcabaloy"]
 
 [ext_resource type="Script" uid="uid://d16y8kt0h826a" path="res://scripts/bullet.gd" id="1_2jo04"]
+[ext_resource type="Script" uid="uid://br2rh1gqxr8tl" path="res://custom_resources/bullet_resource.gd" id="2_3t5r6"]
 [ext_resource type="Texture2D" uid="uid://7ubcx81r3ow8" path="res://icon.svg" id="2_npb7w"]
+
+[sub_resource type="Resource" id="Resource_uwt6g"]
+script = ExtResource("2_3t5r6")
+speed = 1000.0
+damage = 20.0
+metadata/_custom_type_script = "uid://br2rh1gqxr8tl"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ot6j1"]
 
 [node name="knife" type="Area2D" unique_id=1954660282]
 script = ExtResource("1_2jo04")
-speed = 1000
+bullet_stats = SubResource("Resource_uwt6g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1328706488]
 shape = SubResource("RectangleShape2D_ot6j1")

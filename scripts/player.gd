@@ -1,39 +1,33 @@
 extends Node2D
 
+@export var player_stats: player
 
-@export var speed:int = 600
-@export var slowing_down_speed:int = 200
-@export var bomb: PackedScene
-@export var bomb_cost:int = 20
-@export var shot_type_1:PackedScene
-@export var shot_time_1: float
-@export var shot_type_2:PackedScene
-@export var shot_time_2: float
-
-var current_speed = speed
+var current_speed
 var shot_interval: Timer
 var can_shoot: bool = true
 
 func _ready() -> void:
+	current_speed = player_stats.speed
 	shot_interval = $"shoot interval"
 	
 
 func _process(delta: float) -> void:
+	
 	if Input.is_action_pressed("slow_down"):
-		current_speed = slowing_down_speed
+		current_speed = player_stats.slowing_down_speed
 	else:
-		current_speed = speed
+		current_speed = player_stats.speed
 	var directionX = Input.get_axis("left", "right")
 	var directionY = Input.get_axis("up", "down")
 		
 	position += Vector2(directionX, directionY).normalized() * current_speed *delta
 	if Input.is_action_pressed("shoot") and can_shoot:
 		_shoot()
-		shot_interval.start(shot_time_1)
+		shot_interval.start(player_stats.shot_time_1)
 		
 
 func _shoot():
-	var new_bullet = shot_type_1.instantiate()
+	var new_bullet = player_stats.shot_type_1.instantiate()
 	new_bullet.global_position = global_position
 	new_bullet.direction = Vector2.UP
 	new_bullet.add_to_group("player_bullet")
@@ -43,3 +37,8 @@ func _shoot():
 
 func _on_shoot_interval_timeout() -> void:
 	can_shoot = true
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("enemy_bullet"):
+		PlayerInv.player_HP -= 1

@@ -1,3 +1,17 @@
 [gd_scene format=3 uid="uid://b8avtsqy18476"]
 
+[ext_resource type="Script" uid="uid://ym23r4a8xarv" path="res://patterns/patterns.gd" id="1_j15h1"]
+[ext_resource type="PackedScene" uid="uid://dop0k6jsow6yq" path="res://enemies/red_balls.tscn" id="1_vnwwa"]
+[ext_resource type="Script" uid="uid://bx2oyeqtok2ho" path="res://custom_resources/pattern_resource.gd" id="2_oxfgv"]
+
 [node name="test_patterns" type="Node2D" unique_id=841345966]
+script = ExtResource("1_j15h1")
+pattern_resource = ExtResource("2_oxfgv")
+
+[node name="red_balls" parent="." unique_id=1954660282 groups=["enemy_bullet"] instance=ExtResource("1_vnwwa")]
+
+[node name="per_times" type="Timer" parent="." unique_id=1720335007]
+
+[node name="length" type="Timer" parent="." unique_id=949974254]
+
+[connection signal="timeout" from="length" to="." method="_on_length_timeout"]
