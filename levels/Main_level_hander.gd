@@ -14,7 +14,7 @@ func _ready() -> void:
 	
 func _spawn_enemies_on_random():
 	var new_enemy = enemy_pool[0].instantiate()
-	new_enemy.position.x = randf_range(0, 475)
+	new_enemy.position.x = randf_range(0,  950)
 	new_enemy.position.y = 0
 	new_enemy.add_to_group("enemies")
 	add_child(new_enemy)

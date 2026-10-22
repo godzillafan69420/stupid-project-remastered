@@ -18,8 +18,15 @@ func _process(delta: float) -> void:
 	else:
 		current_speed = player_stats.speed
 	var directionX = Input.get_axis("left", "right")
+	if directionX ==1 and position.x > 950:
+		position.x = 950
+	elif directionX == -1 and position.x < 0:
+		position.x = 0
 	var directionY = Input.get_axis("up", "down")
-		
+	if directionY ==1 and position.y > 640:
+		position.y = 640
+	elif directionY == -1 and position.y < 0:
+		position.y = 0
 	position += Vector2(directionX, directionY).normalized() * current_speed *delta
 	if Input.is_action_pressed("shoot") and can_shoot:
 		_shoot()

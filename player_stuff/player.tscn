@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://tati153l58i" path="res://scripts/player.gd" id="1_fp3om"]
 [ext_resource type="Script" uid="uid://cj05r8lefthbf" path="res://custom_resources/player_resource.gd" id="2_43wku"]
-[ext_resource type="Texture2D" uid="uid://7ubcx81r3ow8" path="res://icon.svg" id="2_gcccv"]
 [ext_resource type="PackedScene" uid="uid://cn2m6qcabaloy" path="res://player_stuff/knife.tscn" id="3_43wku"]
+[ext_resource type="Texture2D" uid="uid://c3vseffuu7jnn" path="res://art/timmy.png" id="4_43wku"]
+[ext_resource type="Texture2D" uid="uid://blekrb2bhcn2u" path="res://art/red_hitbox.png" id="5_ajkmv"]
 
 [sub_resource type="Resource" id="Resource_fp3om"]
 script = ExtResource("2_43wku")
@@ -14,15 +15,16 @@ shot_time_1 = 0.1
 metadata/_custom_type_script = "uid://cj05r8lefthbf"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ot6j1"]
-radius = 6.0
+radius = 8.0
 
 [node name="Timmy" type="Node2D" unique_id=1445521221]
 script = ExtResource("1_fp3om")
 player_stats = SubResource("Resource_fp3om")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=846489101]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_gcccv")
+[node name="player_sprite" type="Sprite2D" parent="." unique_id=846489101]
+position = Vector2(-1, 0)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_43wku")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1606721880]
 
@@ -32,6 +34,9 @@ shape = SubResource("CircleShape2D_ot6j1")
 [node name="movement" type="Node" parent="." unique_id=95978633]
 
 [node name="shoot interval" type="Timer" parent="." unique_id=1267233232 groups=["player_bullet"]]
+
+[node name="hit_box_viewer" type="Sprite2D" parent="." unique_id=1662443955]
+texture = ExtResource("5_ajkmv")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="shoot interval" to="." method="_on_shoot_interval_timeout"]

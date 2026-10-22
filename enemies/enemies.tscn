@@ -7,6 +7,7 @@
 [sub_resource type="Resource" id="Resource_v8hav"]
 script = ExtResource("2_dle7p")
 speed = 100
+Hitpoint = 50.0
 metadata/_custom_type_script = "uid://cn7sqiiaw515k"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ot6j1"]

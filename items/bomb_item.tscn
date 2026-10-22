@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ccx7seyahv755"]
+
+[ext_resource type="Script" uid="uid://cpiepseokiskc" path="res://items/item.gd" id="1_fs2ea"]
+[ext_resource type="Texture2D" uid="uid://blekrb2bhcn2u" path="res://art/red_hitbox.png" id="2_yi5ob"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ot6j1"]
+
+[node name="bomb_item" type="Area2D" unique_id=1771443674]
+script = ExtResource("1_fs2ea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=888218938]
+shape = SubResource("RectangleShape2D_ot6j1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=288053794]
+texture = ExtResource("2_yi5ob")
+
+[node name="Timer" type="Timer" parent="." unique_id=404903385]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
