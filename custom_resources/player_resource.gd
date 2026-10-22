@@ -5,17 +5,17 @@ class_name player
 @export var slowing_down_speed:int 
 @export var bomb: PackedScene
 @export var bomb_cost:int 
-@export var shot_type_1:PackedScene
-@export var shot_time_1: float
-@export var shot_type_2:PackedScene
-@export var shot_time_2: float
+
+@export var upgrades: Array[weapon_level_data] = []
+
+func get_current_weapon() -> weapon_level_data:
+	var idx = clamp(PlayerInv.player_power - 1, 0, upgrades.size() - 1)
+	return upgrades[idx]
 
 func _init(vspeed= 600, slowing = 200, vbomb = null, vbomb_cost = 20, shot1 = null, cooldown1 = 0.1, shot2 = null, cooldown2 = 0.1) -> void:
 	speed = vspeed
 	slowing_down_speed = slowing
 	bomb = vbomb
 	bomb_cost = vbomb_cost
-	shot_type_1 = shot1
-	shot_time_1 = cooldown1
-	shot_type_2 = shot2
-	shot_time_2 = cooldown2
+	
+	

@@ -1,12 +1,23 @@
 extends Area2D
 
+
 @export var bullet_stats: bullet 
 
-
 var direction: Vector2
+var curve: float = 0.0 
+
+func _ready() -> void:
+
+	rotation = Vector2.UP.angle_to(direction)
+
 func _process(delta: float) -> void:
-	position += direction.normalized() * bullet_stats.speed * delta
-	if position.y < -10 or position.y >  700 or position.x < -10 or position.x >  1300:
+	if curve != 0.0:
+		direction = direction.rotated(curve * delta)
+		rotation = Vector2.UP.angle_to(direction)
+	
+	global_position += direction * bullet_stats.speed * delta
+	
+	if global_position.y < -10 or global_position.y > 700 or global_position.x < -10 or global_position.x > 1300:
 		queue_free()
 	
 	

@@ -6,8 +6,9 @@
 
 [sub_resource type="Resource" id="Resource_i8s11"]
 script = ExtResource("2_y8pa0")
-speed = 100.0
+speed = 200.0
 damage = 10.0
+destroy_on_impact = true
 metadata/_custom_type_script = "uid://br2rh1gqxr8tl"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ot6j1"]

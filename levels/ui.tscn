@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c1elrqbltem3u"]
+
+[ext_resource type="Texture2D" uid="uid://7ubcx81r3ow8" path="res://icon.svg" id="1_ltyi1"]
+
+[node name="UI" type="Control" unique_id=883013753]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 964.0
+offset_right = 1276.0
+offset_bottom = 640.0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1606421249]
+layout_mode = 0
+offset_right = 308.0
+offset_bottom = 633.0
+texture = ExtResource("1_ltyi1")

@@ -1,4 +1,5 @@
 extends Node2D
+class_name playable_player
 
 @export var player_stats: player
 
@@ -29,17 +30,50 @@ func _process(delta: float) -> void:
 		position.y = 0
 	position += Vector2(directionX, directionY).normalized() * current_speed *delta
 	if Input.is_action_pressed("shoot") and can_shoot:
-		_shoot()
-		shot_interval.start(player_stats.shot_time_1)
+		var weapon: weapon_level_data = player_stats.get_current_weapon()
 		
+		_shoot(weapon)
+		
+		shot_interval.start(weapon.shot_cooldown)
 
-func _shoot():
-	var new_bullet = player_stats.shot_type_1.instantiate()
-	new_bullet.global_position = global_position
-	new_bullet.direction = Vector2.UP
-	new_bullet.add_to_group("player_bullet")
-	get_parent().add_child(new_bullet)
+func _shoot(weapon: weapon_level_data) -> void:
+	
+	
+	if weapon.type == weapon.weapon_type.foward:
+		var starting_position = global_position-Vector2(((weapon.bullet_count-1)*weapon.forward_spread)/2, 0)
+		for i in range(weapon.bullet_count):
+			var new_bullet = weapon.bullet_scene.instantiate()
+			new_bullet.global_position = starting_position + Vector2(i *weapon.forward_spread, -64)
+			new_bullet.direction = Vector2.UP
+			new_bullet.add_to_group("player_bullet")
+			get_parent().add_child(new_bullet)
+	if weapon.type == weapon.weapon_type.spread:
+		var starting_rotation = ((weapon.bullet_count-1) * weapon.spread_angle)/2
+		for i in range(weapon.bullet_count):
+			
+			var new_bullet = weapon.bullet_scene.instantiate()
+			new_bullet.global_position = global_position
+			
+			var angle = -starting_rotation+(i*weapon.spread_angle)
+			new_bullet.direction = Vector2.UP.rotated(deg_to_rad(angle))
+			
+			
+			new_bullet.add_to_group("player_bullet")
+			get_parent().add_child(new_bullet)
+	if weapon.type == weapon.weapon_type.full_aoe:
+		var angle = 360/weapon.bullet_count
+		for i in range(weapon.bullet_count):
+			var new_bullet = weapon.bullet_scene.instantiate()
+			new_bullet.global_position = global_position
+			
+			
+			new_bullet.direction = Vector2.UP.rotated((deg_to_rad(angle*i)))
+			
+			
+			new_bullet.add_to_group("player_bullet")
+			get_parent().add_child(new_bullet)
 	can_shoot = false
+	
 
 
 func _on_shoot_interval_timeout() -> void:

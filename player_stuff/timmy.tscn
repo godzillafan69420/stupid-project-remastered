@@ -3,27 +3,37 @@
 [ext_resource type="Script" uid="uid://tati153l58i" path="res://scripts/player.gd" id="1_fp3om"]
 [ext_resource type="Script" uid="uid://cj05r8lefthbf" path="res://custom_resources/player_resource.gd" id="2_43wku"]
 [ext_resource type="PackedScene" uid="uid://cn2m6qcabaloy" path="res://player_stuff/knife.tscn" id="3_43wku"]
+[ext_resource type="Script" uid="uid://foo2sxay73e2" path="res://custom_resources/weapon_data.gd" id="3_ajkmv"]
 [ext_resource type="Texture2D" uid="uid://c3vseffuu7jnn" path="res://art/timmy.png" id="4_43wku"]
 [ext_resource type="Texture2D" uid="uid://blekrb2bhcn2u" path="res://art/red_hitbox.png" id="5_ajkmv"]
+
+[sub_resource type="Resource" id="Resource_ajkmv"]
+script = ExtResource("3_ajkmv")
+bullet_scene = ExtResource("3_43wku")
+shot_cooldown = 0.1
+bullet_count = 5
+type = 1
+spread_angle = 5.0
+forward_spread = 25.0
+metadata/_custom_type_script = "uid://foo2sxay73e2"
 
 [sub_resource type="Resource" id="Resource_fp3om"]
 script = ExtResource("2_43wku")
 speed = 500
 slowing_down_speed = 100
-shot_type_1 = ExtResource("3_43wku")
-shot_time_1 = 0.1
+upgrades = Array[ExtResource("3_ajkmv")]([SubResource("Resource_ajkmv")])
 metadata/_custom_type_script = "uid://cj05r8lefthbf"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ot6j1"]
-radius = 8.0
+radius = 4.0
 
-[node name="Timmy" type="Node2D" unique_id=1445521221]
+[node name="player" type="Node2D" unique_id=1445521221]
 script = ExtResource("1_fp3om")
 player_stats = SubResource("Resource_fp3om")
 
 [node name="player_sprite" type="Sprite2D" parent="." unique_id=846489101]
 position = Vector2(-1, 0)
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_43wku")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1606721880]
@@ -36,6 +46,8 @@ shape = SubResource("CircleShape2D_ot6j1")
 [node name="shoot interval" type="Timer" parent="." unique_id=1267233232 groups=["player_bullet"]]
 
 [node name="hit_box_viewer" type="Sprite2D" parent="." unique_id=1662443955]
+position = Vector2(0, 8.940697e-08)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_ajkmv")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
