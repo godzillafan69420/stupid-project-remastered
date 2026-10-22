@@ -3,8 +3,6 @@
 [ext_resource type="Script" uid="uid://d2t1887qpphct" path="res://scripts/enemies.gd" id="1_g5tt5"]
 [ext_resource type="Texture2D" uid="uid://7ubcx81r3ow8" path="res://icon.svg" id="1_gu34h"]
 [ext_resource type="Script" uid="uid://cn7sqiiaw515k" path="res://custom_resources/enemy_resource.gd" id="2_dle7p"]
-[ext_resource type="Script" uid="uid://bx2oyeqtok2ho" path="res://custom_resources/pattern_resource.gd" id="3_bb6ow"]
-[ext_resource type="PackedScene" uid="uid://dop0k6jsow6yq" path="res://enemies/red_balls.tscn" id="3_ue28p"]
 
 [sub_resource type="Resource" id="Resource_v8hav"]
 script = ExtResource("2_dle7p")
@@ -12,21 +10,12 @@ speed = 100
 Hitpoint = 50.0
 metadata/_custom_type_script = "uid://cn7sqiiaw515k"
 
-[sub_resource type="Resource" id="Resource_bb6ow"]
-script = ExtResource("3_bb6ow")
-name = "kkk"
-type = 3
-bullet_scene = ExtResource("3_ue28p")
-count = 1
-metadata/_custom_type_script = "uid://bx2oyeqtok2ho"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ot6j1"]
 size = Vector2(117, 119)
 
 [node name="v_mans" type="Area2D" unique_id=1331669204]
 script = ExtResource("1_g5tt5")
 enemy_stats = SubResource("Resource_v8hav")
-active_pattern = SubResource("Resource_bb6ow")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1786119438]
 position = Vector2(-0.5, 0.5)
@@ -36,7 +25,6 @@ shape = SubResource("RectangleShape2D_ot6j1")
 texture = ExtResource("1_gu34h")
 
 [node name="Shoot_interval" type="Timer" parent="." unique_id=2009250858]
-wait_time = 4.995
 autostart = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
