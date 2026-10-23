@@ -83,3 +83,4 @@ func _on_shoot_interval_timeout() -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy_bullet"):
 		PlayerInv.player_HP -= 1
+		Eventbus.update_ui.emit()

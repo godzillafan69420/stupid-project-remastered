@@ -44,8 +44,6 @@ texture = ExtResource("4_43wku")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_box" unique_id=453743991]
 shape = SubResource("CircleShape2D_ot6j1")
 
-[node name="movement" type="Node" parent="." unique_id=95978633]
-
 [node name="shoot interval" type="Timer" parent="." unique_id=1267233232 groups=["player_bullet"]]
 
 [node name="hit_box_viewer" type="Sprite2D" parent="." unique_id=1662443955]
