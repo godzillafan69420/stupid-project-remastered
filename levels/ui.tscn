@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c1elrqbltem3u"]
 
 [ext_resource type="Texture2D" uid="uid://7ubcx81r3ow8" path="res://icon.svg" id="1_ltyi1"]
+[ext_resource type="Script" uid="uid://b60wrs7qul77i" path="res://levels/ui.gd" id="1_vt5b8"]
 
 [node name="UI" type="Control" unique_id=883013753]
 layout_mode = 3
@@ -8,9 +9,58 @@ anchors_preset = 0
 offset_left = 964.0
 offset_right = 1276.0
 offset_bottom = 640.0
+script = ExtResource("1_vt5b8")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1606421249]
 layout_mode = 0
-offset_right = 308.0
+offset_right = 314.0
 offset_bottom = 633.0
 texture = ExtResource("1_ltyi1")
+
+[node name="Health" type="HBoxContainer" parent="TextureRect" unique_id=495245064]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 81.0
+offset_right = 1194.0
+offset_bottom = 209.0
+scale = Vector2(0.25, 0.25)
+
+[node name="bomb" type="HBoxContainer" parent="TextureRect" unique_id=1169489189]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 136.0
+offset_right = 1195.0
+offset_bottom = 264.0
+scale = Vector2(0.25, 0.25)
+
+[node name="HP_label" type="Label" parent="TextureRect" unique_id=84581877]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 49.0
+offset_right = 66.0
+offset_bottom = 72.0
+text = "Health"
+
+[node name="Bomb_label" type="Label" parent="TextureRect" unique_id=1452607532]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 117.0
+offset_right = 67.0
+offset_bottom = 140.0
+text = "Bombs"
+
+[node name="power Level" type="Label" parent="TextureRect" unique_id=1539925132]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 194.0
+offset_right = 65.0
+offset_bottom = 217.0
+text = "Power"
+
+[node name="power" type="Label" parent="TextureRect" unique_id=613610428]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 221.0
+offset_right = 76.0
+offset_bottom = 244.0
+text = "0/100"

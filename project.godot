@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Data="*uid://c6stp0ts5kc5"
 PlayerInv="*uid://dlkuh7bneihmh"
+Eventbus="*uid://ddp2tqylnvmuc"
 
 [display]
 
@@ -36,6 +37,8 @@ enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 player_bullet=""
 enemies=""
 enemy_bullet=""
+player=""
+player_collection_system=""
 
 [input]
 

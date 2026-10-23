@@ -27,6 +27,9 @@ metadata/_custom_type_script = "uid://cj05r8lefthbf"
 [sub_resource type="CircleShape2D" id="CircleShape2D_ot6j1"]
 radius = 4.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_tsvnc"]
+radius = 44.922153
+
 [node name="player" type="Node2D" unique_id=1445521221]
 script = ExtResource("1_fp3om")
 player_stats = SubResource("Resource_fp3om")
@@ -36,9 +39,9 @@ position = Vector2(-1, 0)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_43wku")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1606721880]
+[node name="hurt_box" type="Area2D" parent="." unique_id=1606721880 groups=["player"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=453743991]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_box" unique_id=453743991]
 shape = SubResource("CircleShape2D_ot6j1")
 
 [node name="movement" type="Node" parent="." unique_id=95978633]
@@ -50,5 +53,10 @@ position = Vector2(0, 8.940697e-08)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_ajkmv")
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[node name="collect_system" type="Area2D" parent="." unique_id=1448015776 groups=["player_collection_system"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collect_system" unique_id=1081584027]
+shape = SubResource("CircleShape2D_tsvnc")
+
+[connection signal="area_entered" from="hurt_box" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="shoot interval" to="." method="_on_shoot_interval_timeout"]

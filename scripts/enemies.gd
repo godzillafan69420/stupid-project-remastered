@@ -8,6 +8,10 @@ extends Area2D
 var enemy_HP: float
 var playable_player
 
+@export var curve: float = 0.0
+
+@export var patterns: bool = false
+
 func _ready() -> void:
 	enemy_HP = enemy_stats.Hitpoint
 	playable_player = get_parent().get_node_or_null("player")
@@ -31,23 +35,36 @@ func _on_area_entered(area: Area2D) -> void:
 
 
 func _on_shoot_interval_timeout() -> void:
-	if not active_pattern or not active_pattern.bullet_scene:
-		return
+	if (active_pattern or  active_pattern.bullet_scene) and patterns:
 		
-	var player_pos = playable_player.global_position if playable_player else Vector2.ZERO
-	
-	# Ask the Resource file to do the math heavy lifting
-	var spawns = active_pattern.calculate_bullet_vectors(global_position, player_pos, aimed_at_player)
-	
-	# Physically spawn the calculated outputs
-	for data in spawns:
-		var bullet = active_pattern.bullet_scene.instantiate()
-		bullet.global_position = global_position
-		bullet.direction = data["direction"]
-		bullet.add_to_group("enemy_bullet")
 		
-		# Optional: pass down curving properties to your bullet scene
-		if "curve" in bullet:
-			bullet.curve = data["curve"]
+		var player_pos = playable_player.global_position if playable_player else Vector2.ZERO
+		
+		# Ask the Resource file to do the math heavy lifting
+		var spawns = active_pattern.calculate_bullet_vectors(global_position, player_pos, aimed_at_player)
+		
+		# Physically spawn the calculated outputs
+		for data in spawns:
+			var new_bullet = active_pattern.bullet_scene.instantiate()
+			new_bullet.global_position = global_position
+			new_bullet.direction = data["direction"]
+			new_bullet.add_to_group("enemy_bullet")
 			
-		get_parent().add_child(bullet)
+			# Optional: pass down curving properties to your bullet scene
+			if "curve" in new_bullet:
+				new_bullet.curve = data["curve"]
+				
+			get_parent().add_child(new_bullet)
+			
+	else:
+		var new_bullet = active_pattern.bullet_scene.instantiate()
+		new_bullet.global_position = global_position
+		if aimed_at_player:
+			new_bullet.direction = playable_player.position - position
+		else:
+			new_bullet.direction = Vector2.DOWN
+			
+		new_bullet.add_to_group("enemy_bullet")
+		if "curve" in new_bullet:
+				new_bullet.curve = curve
+		get_parent().add_child(new_bullet)

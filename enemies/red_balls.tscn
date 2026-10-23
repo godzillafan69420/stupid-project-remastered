@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dop0k6jsow6yq"]
 
 [ext_resource type="Script" uid="uid://d16y8kt0h826a" path="res://scripts/bullet.gd" id="1_i8s11"]
-[ext_resource type="Texture2D" uid="uid://7ubcx81r3ow8" path="res://icon.svg" id="2_p5sea"]
 [ext_resource type="Script" uid="uid://br2rh1gqxr8tl" path="res://custom_resources/bullet_resource.gd" id="2_y8pa0"]
+[ext_resource type="Texture2D" uid="uid://bhimkmfxli6nn" path="res://art/red_ball_of_doom.png" id="3_p5sea"]
 
 [sub_resource type="Resource" id="Resource_i8s11"]
 script = ExtResource("2_y8pa0")
@@ -11,14 +11,16 @@ damage = 10.0
 destroy_on_impact = true
 metadata/_custom_type_script = "uid://br2rh1gqxr8tl"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ot6j1"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ue28p"]
+radius = 15.033297
 
 [node name="red_balls" type="Area2D" unique_id=1954660282]
 script = ExtResource("1_i8s11")
 bullet_stats = SubResource("Resource_i8s11")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1328706488]
-shape = SubResource("RectangleShape2D_ot6j1")
+shape = SubResource("CircleShape2D_ue28p")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1731650142]
-texture = ExtResource("2_p5sea")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_p5sea")
