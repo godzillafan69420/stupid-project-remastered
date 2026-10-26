@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://baj5jbowqsggo"]
+
+[ext_resource type="Script" uid="uid://c8itsoqgdrgv1" path="res://scripts/audio_manager.gd" id="1_4brvi"]
+[ext_resource type="PackedScene" uid="uid://c3aaag6q4jdig" path="res://music/audio_oneshot.tscn" id="2_iepa0"]
+[ext_resource type="AudioStream" uid="uid://cegwvs48p4oau" path="res://music/not working in progress i think.mp3" id="3_lue3p"]
+[ext_resource type="AudioStream" uid="uid://b46tw6g706pt2" path="res://music/Kevin.mp3" id="4_fd7le"]
+[ext_resource type="AudioStream" uid="uid://ciaice4moj0c5" path="res://music/banana_lore_remix.mp3" id="5_lue3p"]
+[ext_resource type="AudioStream" uid="uid://bfoq5xbm72xaq" path="res://music/death.mp3" id="6_fd7le"]
+[ext_resource type="AudioStream" uid="uid://coea51pl52h54" path="res://music/i think it is done.mp3" id="7_qu6nq"]
+[ext_resource type="AudioStream" uid="uid://cnei63ghlsh0h" path="res://music/jefferyBall.mp3" id="8_tp6a5"]
+[ext_resource type="AudioStream" uid="uid://u3mhy2eltkn5" path="res://music/kebin.mp3" id="9_ji1bx"]
+[ext_resource type="AudioStream" uid="uid://rkduik8bbrbv" path="res://music/stupid_project_mainmenu_iguess.mp3" id="10_cpr64"]
+[ext_resource type="AudioStream" uid="uid://u0dytnp08e0c" path="res://music/TItle screen.mp3" id="11_05vec"]
+
+[node name="Audio_manager" type="Node" unique_id=1713509690 node_paths=PackedStringArray("music", "sfx")]
+script = ExtResource("1_4brvi")
+music = NodePath("music")
+sfx = NodePath("sfx")
+audio_one_scene = ExtResource("2_iepa0")
+
+[node name="music" type="Node" parent="." unique_id=1196967823]
+
+[node name="final_theme_act1" type="AudioStreamPlayer" parent="music" unique_id=1925503853]
+stream = ExtResource("3_lue3p")
+
+[node name="Kevin" type="AudioStreamPlayer" parent="music" unique_id=1427634229]
+stream = ExtResource("4_fd7le")
+volume_db = 4.299
+
+[node name="BananaLoreRemix" type="AudioStreamPlayer" parent="music" unique_id=1721290016]
+stream = ExtResource("5_lue3p")
+volume_db = 6.986
+
+[node name="Death" type="AudioStreamPlayer" parent="music" unique_id=1579771206]
+stream = ExtResource("6_fd7le")
+
+[node name="IThinkItIsDone" type="AudioStreamPlayer" parent="music" unique_id=1654842176]
+stream = ExtResource("7_qu6nq")
+
+[node name="JefferyBall" type="AudioStreamPlayer" parent="music" unique_id=1373595413]
+stream = ExtResource("8_tp6a5")
+
+[node name="Kebin" type="AudioStreamPlayer" parent="music" unique_id=1981837973]
+stream = ExtResource("9_ji1bx")
+
+[node name="NotWorkingInProgressIThink" type="AudioStreamPlayer" parent="music" unique_id=704124443]
+stream = ExtResource("3_lue3p")
+
+[node name="StupidProjectMainmenuIguess" type="AudioStreamPlayer" parent="music" unique_id=1218549368]
+stream = ExtResource("10_cpr64")
+
+[node name="TItleScreen" type="AudioStreamPlayer" parent="music" unique_id=1246815630]
+stream = ExtResource("11_05vec")
+
+[node name="sfx" type="Node" parent="." unique_id=1078552752]

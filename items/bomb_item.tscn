@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cpiepseokiskc" path="res://items/item.gd" id="1_fs2ea"]
 [ext_resource type="Script" uid="uid://cprdy31mwitbj" path="res://custom_resources/item_resource.gd" id="2_0gnl5"]
-[ext_resource type="Texture2D" uid="uid://blekrb2bhcn2u" path="res://art/red_hitbox.png" id="2_yi5ob"]
+[ext_resource type="Texture2D" uid="uid://dr4lobn2y70ty" path="res://art/bomb.png" id="3_0gnl5"]
 
 [sub_resource type="Resource" id="Resource_rqckr"]
 script = ExtResource("2_0gnl5")
@@ -10,16 +10,19 @@ item = 1
 metadata/_custom_type_script = "uid://cprdy31mwitbj"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ot6j1"]
+size = Vector2(56, 60)
 
 [node name="bomb_item" type="Area2D" unique_id=1771443674]
 script = ExtResource("1_fs2ea")
 identifier = SubResource("Resource_rqckr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=888218938]
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_ot6j1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=288053794]
-texture = ExtResource("2_yi5ob")
+scale = Vector2(0.934, 1)
+texture = ExtResource("3_0gnl5")
 
 [node name="Timer" type="Timer" parent="." unique_id=404903385]
 autostart = true

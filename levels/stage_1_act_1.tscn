@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://q01vfct3jjle" path="res://player_stuff/timmy.tscn" id="1_gxk06"]
 [ext_resource type="Script" uid="uid://dqkoaystcqlv3" path="res://levels/Main_level_hander.gd" id="1_uabdg"]
 [ext_resource type="PackedScene" uid="uid://c17n51e08d3qj" path="res://enemies/enemies.tscn" id="2_gx214"]
+[ext_resource type="PackedScene" uid="uid://dqhobkjlruchu" path="res://enemies/boss.tscn" id="3_18v4t"]
 [ext_resource type="PackedScene" uid="uid://ccx7seyahv755" path="res://items/bomb_item.tscn" id="4_esl6c"]
 [ext_resource type="PackedScene" uid="uid://c1elrqbltem3u" path="res://levels/ui.tscn" id="5_rqckr"]
 
@@ -10,14 +11,19 @@
 script = ExtResource("1_uabdg")
 enemy_pool = Array[PackedScene]([ExtResource("2_gx214")])
 enemy_spawn_interval = 0.5
+boss_scene = ExtResource("3_18v4t")
 
-[node name="Timmy" parent="." unique_id=1445521221 instance=ExtResource("1_gxk06")]
-position = Vector2(649, 569)
+[node name="player" parent="." unique_id=1445521221 instance=ExtResource("1_gxk06")]
+position = Vector2(569, 570)
 
 [node name="enemy_spawn_interval" type="Timer" parent="." unique_id=745071899]
+wait_time = 1.4549999999999998
 autostart = true
 
 [node name="Boss_timer" type="Timer" parent="." unique_id=33152996]
+wait_time = 30.0
+one_shot = true
+autostart = true
 
 [node name="bomb_item" parent="." unique_id=1771443674 instance=ExtResource("4_esl6c")]
 position = Vector2(635, -26)

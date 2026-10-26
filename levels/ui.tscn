@@ -64,3 +64,19 @@ offset_top = 221.0
 offset_right = 76.0
 offset_bottom = 244.0
 text = "0/100"
+
+[node name="boss_time_label" type="Label" parent="TextureRect" unique_id=1134004608]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 258.0
+offset_right = 124.0
+offset_bottom = 281.0
+text = "Boss Incoming"
+
+[node name="boss_timer_display" type="Label" parent="TextureRect" unique_id=505588290]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 287.0
+offset_right = 76.0
+offset_bottom = 310.0
+text = "0/100"

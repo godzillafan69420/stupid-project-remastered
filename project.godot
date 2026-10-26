@@ -13,6 +13,7 @@ config_version=5
 config/name="Stupid Project remastered"
 run/main_scene="uid://dkmiayhtsr51a"
 config/features=PackedStringArray("4.7", "GL Compatibility")
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [autoload]
@@ -20,6 +21,7 @@ config/icon="res://icon.svg"
 Data="*uid://c6stp0ts5kc5"
 PlayerInv="*uid://dlkuh7bneihmh"
 Eventbus="*uid://ddp2tqylnvmuc"
+AudioManager="*uid://baj5jbowqsggo"
 
 [display]
 

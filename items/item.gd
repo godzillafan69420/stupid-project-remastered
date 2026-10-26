@@ -9,6 +9,8 @@ var speed = 1
 func _process(delta: float) -> void:
 	speed += made_up_gravity
 	position.y += speed * delta
+	if position.y > 700:
+		queue_free()
 
 
 	

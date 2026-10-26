@@ -10,18 +10,40 @@
 [sub_resource type="Resource" id="Resource_ajkmv"]
 script = ExtResource("3_ajkmv")
 bullet_scene = ExtResource("3_43wku")
-shot_cooldown = 0.1
+type = 1
+spread_angle = 15.0
+forward_spread = 25.0
+metadata/_custom_type_script = "uid://foo2sxay73e2"
+
+[sub_resource type="Resource" id="Resource_x3er5"]
+script = ExtResource("3_ajkmv")
+bullet_scene = ExtResource("3_43wku")
+bullet_count = 3
+type = 1
+spread_angle = 15.0
+metadata/_custom_type_script = "uid://foo2sxay73e2"
+
+[sub_resource type="Resource" id="Resource_j0vii"]
+script = ExtResource("3_ajkmv")
+bullet_scene = ExtResource("3_43wku")
 bullet_count = 5
 type = 1
-spread_angle = 5.0
-forward_spread = 25.0
+spread_angle = 15.0
+metadata/_custom_type_script = "uid://foo2sxay73e2"
+
+[sub_resource type="Resource" id="Resource_yld6y"]
+script = ExtResource("3_ajkmv")
+bullet_scene = ExtResource("3_43wku")
+bullet_count = 7
+type = 1
+spread_angle = 10.0
 metadata/_custom_type_script = "uid://foo2sxay73e2"
 
 [sub_resource type="Resource" id="Resource_fp3om"]
 script = ExtResource("2_43wku")
 speed = 500
-slowing_down_speed = 100
-upgrades = Array[ExtResource("3_ajkmv")]([SubResource("Resource_ajkmv")])
+slowing_down_speed = 200
+upgrades = Array[ExtResource("3_ajkmv")]([SubResource("Resource_ajkmv"), SubResource("Resource_x3er5"), SubResource("Resource_j0vii"), SubResource("Resource_yld6y")])
 metadata/_custom_type_script = "uid://cj05r8lefthbf"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ot6j1"]

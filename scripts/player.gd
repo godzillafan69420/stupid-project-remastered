@@ -7,16 +7,22 @@ var current_speed
 var shot_interval: Timer
 var can_shoot: bool = true
 
+const BULLET_SPAWN_OFFSET: Vector2 = Vector2(0,-44)
+var weapon: weapon_level_data 
+
 func _ready() -> void:
+	weapon= player_stats.upgrades[0]
 	current_speed = player_stats.speed
 	shot_interval = $"shoot interval"
 	
 
 func _process(delta: float) -> void:
-	
 	if Input.is_action_pressed("slow_down"):
 		current_speed = player_stats.slowing_down_speed
+		$hit_box_viewer.visible = true
+		
 	else:
+		$hit_box_viewer.visible = false
 		current_speed = player_stats.speed
 	var directionX = Input.get_axis("left", "right")
 	if directionX ==1 and position.x > 950:
@@ -30,15 +36,25 @@ func _process(delta: float) -> void:
 		position.y = 0
 	position += Vector2(directionX, directionY).normalized() * current_speed *delta
 	if Input.is_action_pressed("shoot") and can_shoot:
-		var weapon: weapon_level_data = player_stats.get_current_weapon()
 		
-		_shoot(weapon)
-		
-		shot_interval.start(weapon.shot_cooldown)
+		if PlayerInv.player_power <= 10:
+			weapon = player_stats.upgrades[0]
+			_shoot(weapon)
+			shot_interval.start(weapon.shot_cooldown)
+		elif PlayerInv.player_power <= 40:
+			weapon = player_stats.upgrades[1]
+			_shoot(weapon)
+			shot_interval.start(weapon.shot_cooldown)
+		elif PlayerInv.player_power <= 75:
+			weapon = player_stats.upgrades[2]
+			_shoot(weapon)
+			shot_interval.start(weapon.shot_cooldown)
+		elif PlayerInv.player_power <= 100:
+			weapon = player_stats.upgrades[3]
+			_shoot(weapon)
+			shot_interval.start(weapon.shot_cooldown)
 
 func _shoot(weapon: weapon_level_data) -> void:
-	
-	
 	if weapon.type == weapon.weapon_type.foward:
 		var starting_position = global_position-Vector2(((weapon.bullet_count-1)*weapon.forward_spread)/2, 0)
 		for i in range(weapon.bullet_count):
@@ -52,7 +68,7 @@ func _shoot(weapon: weapon_level_data) -> void:
 		for i in range(weapon.bullet_count):
 			
 			var new_bullet = weapon.bullet_scene.instantiate()
-			new_bullet.global_position = global_position
+			new_bullet.global_position = global_position + BULLET_SPAWN_OFFSET
 			
 			var angle = -starting_rotation+(i*weapon.spread_angle)
 			new_bullet.direction = Vector2.UP.rotated(deg_to_rad(angle))
@@ -64,7 +80,7 @@ func _shoot(weapon: weapon_level_data) -> void:
 		var angle = 360/weapon.bullet_count
 		for i in range(weapon.bullet_count):
 			var new_bullet = weapon.bullet_scene.instantiate()
-			new_bullet.global_position = global_position
+			new_bullet.global_position = global_position +BULLET_SPAWN_OFFSET
 			
 			
 			new_bullet.direction = Vector2.UP.rotated((deg_to_rad(angle*i)))
@@ -83,4 +99,5 @@ func _on_shoot_interval_timeout() -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy_bullet"):
 		PlayerInv.player_HP -= 1
+		position = Vector2(570,570)
 		Eventbus.update_ui.emit()

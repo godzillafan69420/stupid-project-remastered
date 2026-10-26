@@ -4,6 +4,9 @@ extends Resource
 
 enum PatternType { RING, SPIRAL, PINWHEEL, STRAIGHT}
 
+@export var special_patterns:bool
+
+
 @export var name: String = "Default Pattern"
 @export var type: PatternType = PatternType.RING
 @export var bullet_scene: PackedScene
@@ -12,10 +15,12 @@ enum PatternType { RING, SPIRAL, PINWHEEL, STRAIGHT}
 @export var bullet_speed: float = 200.0
 @export var bullet_curve: float = 0.0 
 
+
+
 @export_group("Pattern Controls")
 @export var count: int = 12            
 @export var spin_rate: float = 0.05     
-
+@export var aimed_at_player: bool = false
 
 var current_angle: float = 0.0
 
