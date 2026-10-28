@@ -21,6 +21,10 @@ func _ready() -> void:
 	AudioManager.play(theme)
 	enemy_spawner_timer = $enemy_spawn_interval
 	enemy_spawner_timer.wait_time = enemy_spawn_interval
+	Eventbus.start_the_boss_fight.connect(_beginning_fight)
+	
+func _beginning_fight():
+	current_state = states.boss
 	
 	
 func _spawn_enemies_on_random():
@@ -38,10 +42,9 @@ func _on_enemy_spawn_interval_timeout() -> void:
 
 
 func _on_boss_timer_timeout() -> void:
-	current_state = states.boss
-	AudioManager.play(boss_theme)
+	current_state = states.dialogue
 	var new_boss = boss_scene.instantiate()
 	new_boss.position = Vector2(500,100)
 	new_boss.name = "boss"
 	add_child(new_boss)
-	Eventbus.boss_spawned.emit()
+	Eventbus.do_dialogue.emit()

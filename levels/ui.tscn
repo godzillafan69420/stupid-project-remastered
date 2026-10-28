@@ -90,7 +90,39 @@ offset_bottom = 604.0
 text = "0/100"
 
 [node name="boss_hp" type="ProgressBar" parent="." unique_id=1278743227]
+visible = false
 layout_mode = 0
 offset_left = -964.0
 offset_right = 4.0
 offset_bottom = 27.0
+
+[node name="dialogue_interface" type="Panel" parent="." unique_id=1056754840]
+visible = false
+layout_mode = 0
+offset_left = -961.0
+offset_top = 400.0
+offset_right = -3.0
+offset_bottom = 659.0
+
+[node name="Protraits" type="TextureRect" parent="dialogue_interface" unique_id=1544487112]
+layout_mode = 0
+offset_left = 607.0
+offset_top = -271.0
+offset_right = 933.0
+offset_bottom = 265.0
+
+[node name="name" type="Label" parent="dialogue_interface" unique_id=1411010416]
+layout_mode = 0
+offset_right = 340.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 28
+text = "Name"
+
+[node name="paragraph" type="Label" parent="dialogue_interface" unique_id=876199681]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 37.0
+offset_right = 643.0
+offset_bottom = 249.0
+theme_override_font_sizes/font_size = 21
+text = "Name"

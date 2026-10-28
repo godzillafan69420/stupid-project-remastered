@@ -1,5 +1,7 @@
 extends Area2D
 
+var fight = false
+
 @export var patterns: Array[boss_attack]
 @export var speed: float
 @export var hitpoint: float
@@ -22,17 +24,23 @@ func get_next_item(arr: Array, index: int):
 	return null
 
 func _ready() -> void:
+	Eventbus.start_the_boss_fight.connect(_beginning_fight)
 	$frequency.wait_time = patterns[current_attack].attack_speed
 	random_position = global_position
 	playable_player = get_parent().get_node("player")
-	
+
+func _beginning_fight():
+	$"move around frequency".start()
+	fight = true
 	
 func _process(delta: float) -> void:
-	if get_next_item(patterns, current_attack) != null:
+
+	if get_next_item(patterns, current_attack) != null and fight:
 		if hitpoint < get_next_item(patterns, current_attack).hp_level:
 			current_attack += 1
 			$frequency.wait_time = patterns[current_attack].attack_speed
-	global_position = global_position.move_toward(random_position, speed * delta)
+	if fight:
+		global_position = global_position.move_toward(random_position, speed * delta)
 	if hitpoint < 0:
 		queue_free()
 	
@@ -71,6 +79,8 @@ func use_attack_pattern(active_pattern):
 
 
 func _on_frequency_timeout() -> void:
+	if not fight:
+		return
 	for i in patterns[current_attack].patterns:
 		use_attack_pattern(i)
 
@@ -85,4 +95,4 @@ func _on_area_entered(area: Area2D) -> void:
 
 
 func _on_move_around_frequency_timeout() -> void:
-	random_position = Vector2(randf_range(400,750), randf_range(50,200))
+	random_position = Vector2(randf_range(400,650), randf_range(50,150))

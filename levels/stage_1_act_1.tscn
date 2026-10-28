@@ -4,15 +4,34 @@
 [ext_resource type="Script" uid="uid://dqkoaystcqlv3" path="res://levels/Main_level_hander.gd" id="1_uabdg"]
 [ext_resource type="PackedScene" uid="uid://c17n51e08d3qj" path="res://enemies/enemies.tscn" id="2_gx214"]
 [ext_resource type="PackedScene" uid="uid://dqhobkjlruchu" path="res://enemies/boss.tscn" id="3_18v4t"]
-[ext_resource type="PackedScene" uid="uid://ccx7seyahv755" path="res://items/bomb_item.tscn" id="4_esl6c"]
 [ext_resource type="PackedScene" uid="uid://c1elrqbltem3u" path="res://levels/ui.tscn" id="5_rqckr"]
+[ext_resource type="Script" uid="uid://b8c5ow3bydc38" path="res://custom_resources/dialogue_resource.gd" id="5_yb3oa"]
+[ext_resource type="Texture2D" uid="uid://cunhltmojy1jm" path="res://art/vamnBoss.png" id="6_h6gf6"]
+
+[sub_resource type="Resource" id="Resource_rqckr"]
+script = ExtResource("5_yb3oa")
+reader_name = "Vman"
+paragraph = "Bum demo game more to come"
+music_name = "VmanAthems"
+portraits = ExtResource("6_h6gf6")
+metadata/_custom_type_script = "uid://b8c5ow3bydc38"
+
+[sub_resource type="Resource" id="Resource_18v4t"]
+script = ExtResource("5_yb3oa")
+reader_name = "John StupidProject"
+paragraph = "igb"
+metadata/_custom_type_script = "uid://b8c5ow3bydc38"
 
 [node name="stage_1_act_1" type="Node2D" unique_id=1138670238]
 script = ExtResource("1_uabdg")
-boss_theme = "VmanAthems"
+theme = "Kebin"
 enemy_pool = Array[PackedScene]([ExtResource("2_gx214")])
 enemy_spawn_interval = 0.5
 boss_scene = ExtResource("3_18v4t")
+
+[node name="UI" parent="." unique_id=883013753 instance=ExtResource("5_rqckr")]
+z_index = 1000
+current_dialogue = Array[ExtResource("5_yb3oa")]([SubResource("Resource_rqckr"), SubResource("Resource_18v4t")])
 
 [node name="player" parent="." unique_id=1445521221 instance=ExtResource("1_gxk06")]
 position = Vector2(569, 570)
@@ -22,14 +41,9 @@ wait_time = 1.4549999999999998
 autostart = true
 
 [node name="Boss_timer" type="Timer" parent="." unique_id=33152996]
-wait_time = 30.0
+wait_time = 60.0
 one_shot = true
 autostart = true
-
-[node name="bomb_item" parent="." unique_id=1771443674 instance=ExtResource("4_esl6c")]
-position = Vector2(635, -26)
-
-[node name="UI" parent="." unique_id=883013753 instance=ExtResource("5_rqckr")]
 
 [connection signal="timeout" from="enemy_spawn_interval" to="." method="_on_enemy_spawn_interval_timeout"]
 [connection signal="timeout" from="Boss_timer" to="." method="_on_boss_timer_timeout"]
