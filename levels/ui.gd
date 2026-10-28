@@ -6,18 +6,25 @@ extends Control
 @onready var boss_timer_dis = $TextureRect/boss_timer_display
 @onready var money = $TextureRect/Health
 
+@onready var boss_bar = $boss_hp
+var boss_node: Area2D
 var boss_timer:Timer
 
 const icon = preload("res://art/health_bar.png")
 
 func _ready() -> void:
+	
 	boss_timer=get_parent().get_node_or_null("Boss_timer")
 	_change_ui()
 	Eventbus.update_ui.connect(_change_ui)
+	Eventbus.boss_spawned.connect(_show_boss_ui)
 	
 
 func _process(delta: float) -> void:
 	boss_timer_dis.text = str(int(boss_timer.time_left))
+	$TextureRect/FPS.text = str(Engine.get_frames_per_second())
+	if get_parent().current_state == get_parent().states.boss:
+		boss_bar.value = boss_node.hitpoint
 	
 func _change_ui()-> void:
 	if PlayerInv.player_HP > 10:
@@ -39,4 +46,11 @@ func _change_ui()-> void:
 		new_display.texture = icon
 		bomb.add_child(new_display)
 	power.text = str(PlayerInv.player_power)+ "/100"
+	
+
+func _show_boss_ui():
+	boss_node = get_parent().get_node_or_null("boss")
+	boss_bar.visible = true
+	boss_bar.max_value = boss_node.hitpoint
+	boss_bar.value = boss_node.hitpoint
 	

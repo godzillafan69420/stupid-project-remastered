@@ -10,7 +10,7 @@ extends Node2D
 
 @export var boss_scene:PackedScene
 
-enum states{preboss, dialogue, boss}
+enum states{preboss, dialogue, boss, postboss}
 
 var current_state:states
 
@@ -42,4 +42,6 @@ func _on_boss_timer_timeout() -> void:
 	AudioManager.play(boss_theme)
 	var new_boss = boss_scene.instantiate()
 	new_boss.position = Vector2(500,100)
+	new_boss.name = "boss"
 	add_child(new_boss)
+	Eventbus.boss_spawned.emit()

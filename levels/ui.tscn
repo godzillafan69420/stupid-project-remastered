@@ -80,3 +80,17 @@ offset_top = 287.0
 offset_right = 76.0
 offset_bottom = 310.0
 text = "0/100"
+
+[node name="FPS" type="Label" parent="TextureRect" unique_id=436246269]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 581.0
+offset_right = 291.0
+offset_bottom = 604.0
+text = "0/100"
+
+[node name="boss_hp" type="ProgressBar" parent="." unique_id=1278743227]
+layout_mode = 0
+offset_left = -964.0
+offset_right = 4.0
+offset_bottom = 27.0

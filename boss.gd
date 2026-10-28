@@ -22,6 +22,7 @@ func get_next_item(arr: Array, index: int):
 	return null
 
 func _ready() -> void:
+	$frequency.wait_time = patterns[current_attack].attack_speed
 	random_position = global_position
 	playable_player = get_parent().get_node("player")
 	
@@ -29,8 +30,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if get_next_item(patterns, current_attack) != null:
 		if hitpoint < get_next_item(patterns, current_attack).hp_level:
-			current_attack = get_next_item(patterns, current_attack)
+			current_attack += 1
+			$frequency.wait_time = patterns[current_attack].attack_speed
 	global_position = global_position.move_toward(random_position, speed * delta)
+	if hitpoint < 0:
+		queue_free()
 	
 func use_attack_pattern(active_pattern):
 	if (active_pattern or active_pattern.bullet_scene) and active_pattern.special_patterns:

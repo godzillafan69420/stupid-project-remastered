@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://u3mhy2eltkn5" path="res://music/kebin.mp3" id="9_ji1bx"]
 [ext_resource type="AudioStream" uid="uid://rkduik8bbrbv" path="res://music/stupid_project_mainmenu_iguess.mp3" id="10_cpr64"]
 [ext_resource type="AudioStream" uid="uid://u0dytnp08e0c" path="res://music/TItle screen.mp3" id="11_05vec"]
+[ext_resource type="AudioStream" uid="uid://cqyntx1tmt2rh" path="res://music/vmanAthems.mp3" id="12_tp6a5"]
 
 [node name="Audio_manager" type="Node" unique_id=1713509690 node_paths=PackedStringArray("music", "sfx")]
 script = ExtResource("1_4brvi")
@@ -51,5 +52,8 @@ stream = ExtResource("10_cpr64")
 
 [node name="TItleScreen" type="AudioStreamPlayer" parent="music" unique_id=1246815630]
 stream = ExtResource("11_05vec")
+
+[node name="VmanAthems" type="AudioStreamPlayer" parent="music" unique_id=1555818330]
+stream = ExtResource("12_tp6a5")
 
 [node name="sfx" type="Node" parent="." unique_id=1078552752]

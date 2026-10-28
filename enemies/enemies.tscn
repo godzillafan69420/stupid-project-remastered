@@ -1,17 +1,11 @@
 [gd_scene format=3 uid="uid://c17n51e08d3qj"]
 
 [ext_resource type="Script" uid="uid://d2t1887qpphct" path="res://scripts/enemies.gd" id="1_g5tt5"]
-[ext_resource type="Script" uid="uid://cn7sqiiaw515k" path="res://custom_resources/enemy_resource.gd" id="2_dle7p"]
+[ext_resource type="Resource" uid="uid://c2yiptc3jmckk" path="res://enemy_saved_resource/vman.tres" id="2_atllv"]
 [ext_resource type="PackedScene" uid="uid://bws5oo76mnom4" path="res://items/power_item.tscn" id="3_atllv"]
 [ext_resource type="PackedScene" uid="uid://dop0k6jsow6yq" path="res://enemies/red_balls.tscn" id="3_ue28p"]
 [ext_resource type="Script" uid="uid://bx2oyeqtok2ho" path="res://custom_resources/pattern_resource.gd" id="4_atllv"]
 [ext_resource type="Texture2D" uid="uid://dogpx1mor6pvx" path="res://art/vman.png" id="5_ue28p"]
-
-[sub_resource type="Resource" id="Resource_v8hav"]
-script = ExtResource("2_dle7p")
-speed = 50
-Hitpoint = 50.0
-metadata/_custom_type_script = "uid://cn7sqiiaw515k"
 
 [sub_resource type="Resource" id="Resource_dvtim"]
 script = ExtResource("4_atllv")
@@ -25,7 +19,7 @@ size = Vector2(70, 95)
 
 [node name="v_mans" type="Area2D" unique_id=1331669204]
 script = ExtResource("1_g5tt5")
-enemy_stats = SubResource("Resource_v8hav")
+enemy_stats = ExtResource("2_atllv")
 drops = Array[PackedScene]([ExtResource("3_atllv")])
 active_pattern = SubResource("Resource_dvtim")
 

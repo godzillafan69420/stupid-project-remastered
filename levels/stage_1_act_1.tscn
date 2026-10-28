@@ -9,6 +9,7 @@
 
 [node name="stage_1_act_1" type="Node2D" unique_id=1138670238]
 script = ExtResource("1_uabdg")
+boss_theme = "VmanAthems"
 enemy_pool = Array[PackedScene]([ExtResource("2_gx214")])
 enemy_spawn_interval = 0.5
 boss_scene = ExtResource("3_18v4t")

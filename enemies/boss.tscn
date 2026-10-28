@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://b5jfx47fcre4t" path="res://custom_resources/boss_attacks.gd" id="2_nbsx1"]
 [ext_resource type="Script" uid="uid://bx2oyeqtok2ho" path="res://custom_resources/pattern_resource.gd" id="3_nbsx1"]
 [ext_resource type="Texture2D" uid="uid://cunhltmojy1jm" path="res://art/vamnBoss.png" id="5_85rbr"]
+[ext_resource type="PackedScene" uid="uid://5whxka6isuaw" path="res://enemies/big_red_balls.tscn" id="5_ny027"]
 
 [sub_resource type="Resource" id="Resource_nbsx1"]
 script = ExtResource("3_nbsx1")
@@ -35,18 +36,57 @@ metadata/_custom_type_script = "uid://bx2oyeqtok2ho"
 [sub_resource type="Resource" id="Resource_n18d2"]
 script = ExtResource("2_nbsx1")
 patterns = Array[ExtResource("3_nbsx1")]([SubResource("Resource_nbsx1"), SubResource("Resource_18v4t"), SubResource("Resource_yb3oa")])
+hp_level = 3000.0
+attack_speed = 0.5
+metadata/_custom_type_script = "uid://b5jfx47fcre4t"
+
+[sub_resource type="Resource" id="Resource_ny027"]
+script = ExtResource("3_nbsx1")
+special_patterns = true
+bullet_scene = ExtResource("5_ny027")
+bullet_curve = 0.25
+aimed_at_player = true
+metadata/_custom_type_script = "uid://bx2oyeqtok2ho"
+
+[sub_resource type="Resource" id="Resource_inxvj"]
+script = ExtResource("3_nbsx1")
+special_patterns = true
+bullet_scene = ExtResource("5_ny027")
+bullet_curve = -0.25
+aimed_at_player = true
+metadata/_custom_type_script = "uid://bx2oyeqtok2ho"
+
+[sub_resource type="Resource" id="Resource_85rbr"]
+script = ExtResource("2_nbsx1")
+patterns = Array[ExtResource("3_nbsx1")]([SubResource("Resource_ny027"), SubResource("Resource_inxvj")])
+hp_level = 2000.0
+attack_speed = 0.5
+metadata/_custom_type_script = "uid://b5jfx47fcre4t"
+
+[sub_resource type="Resource" id="Resource_3t5r6"]
+script = ExtResource("3_nbsx1")
+special_patterns = true
+type = 2
+bullet_scene = ExtResource("2_n18d2")
+count = 40
+spin_rate = -0.5
+metadata/_custom_type_script = "uid://bx2oyeqtok2ho"
+
+[sub_resource type="Resource" id="Resource_s6px3"]
+script = ExtResource("2_nbsx1")
+patterns = Array[ExtResource("3_nbsx1")]([SubResource("Resource_3t5r6")])
 hp_level = 1000.0
-attack_speed = 0.1
+attack_speed = 0.4
 metadata/_custom_type_script = "uid://b5jfx47fcre4t"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ot6j1"]
 radius = 81.00617
 
-[node name="Vman" type="Area2D" unique_id=1219488536]
+[node name="ConeL" type="Area2D" unique_id=1219488536]
 script = ExtResource("1_7hfrd")
-patterns = Array[ExtResource("2_nbsx1")]([SubResource("Resource_n18d2")])
+patterns = Array[ExtResource("2_nbsx1")]([SubResource("Resource_n18d2"), SubResource("Resource_85rbr"), SubResource("Resource_s6px3")])
 speed = 100.0
-hitpoint = 1000.0
+hitpoint = 3000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=481209327]
 shape = SubResource("CircleShape2D_ot6j1")
@@ -58,7 +98,7 @@ autostart = true
 texture = ExtResource("5_85rbr")
 
 [node name="move around frequency" type="Timer" parent="." unique_id=1002401617]
-wait_time = 2.0
+wait_time = 5.0
 autostart = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://byjs84l54h65m"]
+
+[ext_resource type="Script" uid="uid://btlpttrf71s33" path="res://boss.gd" id="1_4ug1p"]
+[ext_resource type="Script" uid="uid://b5jfx47fcre4t" path="res://custom_resources/boss_attacks.gd" id="2_hlj4b"]
+[ext_resource type="Script" uid="uid://bx2oyeqtok2ho" path="res://custom_resources/pattern_resource.gd" id="3_xnc1p"]
+[ext_resource type="PackedScene" uid="uid://dop0k6jsow6yq" path="res://enemies/red_balls.tscn" id="4_g3qrt"]
+[ext_resource type="PackedScene" uid="uid://5whxka6isuaw" path="res://enemies/big_red_balls.tscn" id="5_r4qx5"]
+[ext_resource type="Texture2D" uid="uid://cunhltmojy1jm" path="res://art/vamnBoss.png" id="6_rxgcw"]
+
+[sub_resource type="Resource" id="Resource_18v4t"]
+script = ExtResource("3_xnc1p")
+special_patterns = true
+type = 1
+bullet_scene = ExtResource("4_g3qrt")
+bullet_speed = 180.0
+count = 24
+metadata/_custom_type_script = "uid://bx2oyeqtok2ho"
+
+[sub_resource type="Resource" id="Resource_n18d2"]
+script = ExtResource("2_hlj4b")
+patterns = Array[ExtResource("3_xnc1p")]([SubResource("Resource_18v4t")])
+hp_level = 3000.0
+attack_speed = 0.5
+metadata/_custom_type_script = "uid://b5jfx47fcre4t"
+
+[sub_resource type="Resource" id="Resource_ny027"]
+script = ExtResource("3_xnc1p")
+special_patterns = true
+bullet_scene = ExtResource("5_r4qx5")
+bullet_curve = 0.25
+aimed_at_player = true
+metadata/_custom_type_script = "uid://bx2oyeqtok2ho"
+
+[sub_resource type="Resource" id="Resource_85rbr"]
+script = ExtResource("2_hlj4b")
+patterns = Array[ExtResource("3_xnc1p")]([SubResource("Resource_ny027")])
+hp_level = 1500.0
+attack_speed = 0.5
+metadata/_custom_type_script = "uid://b5jfx47fcre4t"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ot6j1"]
+radius = 81.00617
+
+[node name="vman" type="Area2D" unique_id=1219488536]
+script = ExtResource("1_4ug1p")
+patterns = Array[ExtResource("2_hlj4b")]([SubResource("Resource_n18d2"), SubResource("Resource_85rbr")])
+speed = 100.0
+hitpoint = 3000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=481209327]
+shape = SubResource("CircleShape2D_ot6j1")
+
+[node name="frequency" type="Timer" parent="." unique_id=213025559]
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1520129289]
+texture = ExtResource("6_rxgcw")
+
+[node name="move around frequency" type="Timer" parent="." unique_id=1002401617]
+wait_time = 5.0
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="frequency" to="." method="_on_frequency_timeout"]
+[connection signal="timeout" from="move around frequency" to="." method="_on_move_around_frequency_timeout"]
