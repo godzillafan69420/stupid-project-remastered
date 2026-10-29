@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://d17app71weeme"]
+
+[ext_resource type="Texture2D" uid="uid://dpvr04uacrqog" path="res://art/Untitled.jpg" id="1_wocww"]
+[ext_resource type="Script" uid="uid://ce47inaj25h0b" path="res://levels/death.gd" id="2_bkqji"]
+
+[node name="died" type="Control" unique_id=1443544225]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_bkqji")
+
+[node name="Untitled" type="Sprite2D" parent="." unique_id=329318495]
+modulate = Color(0.27314225, 0.27314225, 0.27314222, 1)
+position = Vector2(686, 252.50006)
+scale = Vector2(7.556701, 4.0270276)
+texture = ExtResource("1_wocww")
+
+[node name="Label" type="Label" parent="." unique_id=201217334]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 124.0
+offset_right = 946.0
+offset_bottom = 261.0
+theme_override_font_sizes/font_size = 100
+text = "DIEded"
+
+[node name="Button" type="Button" parent="." unique_id=2115885932]
+layout_mode = 0
+offset_left = 394.0
+offset_top = 286.0
+offset_right = 839.0
+offset_bottom = 370.0
+mouse_filter = 2
+button_mask = 0
+text = "Main Menu"
+
+[node name="Button2" type="Button" parent="." unique_id=52470615]
+layout_mode = 0
+offset_left = 393.0
+offset_top = 394.0
+offset_right = 838.0
+offset_bottom = 478.0
+mouse_filter = 2
+button_mask = 0
+text = "retry"
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Button2" to="." method="_on_button_2_button_down"]

@@ -42,6 +42,7 @@ func _process(delta: float) -> void:
 	if fight:
 		global_position = global_position.move_toward(random_position, speed * delta)
 	if hitpoint < 0:
+		Eventbus.beaten_the_boss.emit()
 		queue_free()
 	
 func use_attack_pattern(active_pattern):
@@ -86,7 +87,7 @@ func _on_frequency_timeout() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("player_bullet"):
+	if area.is_in_group("player_bullet") and fight:
 		
 		hitpoint -= area.bullet_stats.damage
 		if area.bullet_stats.destroy_on_impact:

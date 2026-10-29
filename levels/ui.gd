@@ -27,12 +27,13 @@ func _ready() -> void:
 	_change_ui()
 	Eventbus.update_ui.connect(_change_ui)
 	Eventbus.do_dialogue.connect(_show_boss_ui)
+	Eventbus.beaten_the_boss.connect(_show_next_level)
 	
 
 func _process(delta: float) -> void:
 	boss_timer_dis.text = str(int(boss_timer.time_left))
 	$TextureRect/FPS.text = str(Engine.get_frames_per_second())
-	if get_parent().current_state == get_parent().states.boss:
+	if get_parent().current_state == get_parent().states.boss and boss_node != null:
 		boss_bar.value = boss_node.hitpoint
 
 
@@ -81,6 +82,11 @@ func _show_boss_ui() -> void:
 	doing_dialogue = true
 	_next_dialogue(current_dialogue[dialogue_number])
 	
+func _show_next_level() -> void:
+	$Victory_pannel/Button.grab_focus.call_deferred()
+	$Victory_pannel.visible = true
+	
+	
 
 
 	
@@ -105,3 +111,7 @@ func _next_dialogue(dialogue_data: dialogue):
 	text_animation.play()
 			
 		
+
+
+func _on_button_button_down() -> void:
+	get_tree().change_scene_to_file("res://levels/credits.tscn")

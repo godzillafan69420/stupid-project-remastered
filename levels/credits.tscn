@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://hh7j8eskgtqt"]
+
+[ext_resource type="Script" uid="uid://b4r70b5somlrb" path="res://levels/credits.gd" id="1_i2oue"]
+[ext_resource type="Texture2D" uid="uid://dpvr04uacrqog" path="res://art/Untitled.jpg" id="1_oat60"]
+
+[node name="credits" type="Control" unique_id=561322237]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i2oue")
+
+[node name="Untitled" type="Sprite2D" parent="." unique_id=1319611948]
+modulate = Color(0.25275356, 0.25275356, 0.25275356, 1)
+position = Vector2(636.5, 252.50006)
+scale = Vector2(6.6030936, 4.0270276)
+texture = ExtResource("1_oat60")
+
+[node name="Label" type="Label" parent="." unique_id=1993905571]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 21.0
+offset_right = 951.0
+offset_bottom = 298.0
+theme_override_font_sizes/font_size = 100
+text = "Thanks for playing
+ this demo"
+
+[node name="Label2" type="Label" parent="." unique_id=1695801133]
+layout_mode = 0
+offset_left = 756.0
+offset_top = 347.0
+offset_right = 1415.0
+offset_bottom = 632.0
+theme_override_font_sizes/font_size = 50
+text = "Art - me67
+Programming - me67
+writing - me67
+music - me67"
+
+[node name="Button" type="Button" parent="." unique_id=666922318]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 307.0
+offset_right = 541.0
+offset_bottom = 391.0
+mouse_filter = 2
+button_mask = 0
+text = "Main Menu"
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

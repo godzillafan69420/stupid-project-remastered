@@ -126,3 +126,28 @@ offset_right = 643.0
 offset_bottom = 249.0
 theme_override_font_sizes/font_size = 21
 text = "Name"
+
+[node name="Victory_pannel" type="Panel" parent="." unique_id=1764097419]
+visible = false
+layout_mode = 0
+offset_left = -585.0
+offset_top = 104.0
+offset_right = -259.0
+offset_bottom = 513.0
+
+[node name="Label" type="Label" parent="Victory_pannel" unique_id=1856613656]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 70.0
+theme_override_font_sizes/font_size = 34
+text = "Boss beaten"
+
+[node name="Button" type="Button" parent="Victory_pannel" unique_id=410626160]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 74.0
+offset_right = 314.0
+offset_bottom = 126.0
+text = "Credits"
+
+[connection signal="button_down" from="Victory_pannel/Button" to="." method="_on_button_button_down"]

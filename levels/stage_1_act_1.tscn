@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c1elrqbltem3u" path="res://levels/ui.tscn" id="5_rqckr"]
 [ext_resource type="Script" uid="uid://b8c5ow3bydc38" path="res://custom_resources/dialogue_resource.gd" id="5_yb3oa"]
 [ext_resource type="Texture2D" uid="uid://cunhltmojy1jm" path="res://art/vamnBoss.png" id="6_h6gf6"]
+[ext_resource type="Texture2D" uid="uid://dpvr04uacrqog" path="res://art/Untitled.jpg" id="8_h6gf6"]
 
 [sub_resource type="Resource" id="Resource_rqckr"]
 script = ExtResource("5_yb3oa")
@@ -44,6 +45,13 @@ autostart = true
 wait_time = 60.0
 one_shot = true
 autostart = true
+
+[node name="Untitled" type="Sprite2D" parent="." unique_id=1275685273]
+modulate = Color(0.3083999, 0.3083999, 0.3083999, 1)
+z_index = -4096
+position = Vector2(485.50003, 235.99998)
+scale = Vector2(4.984536, 4.0270276)
+texture = ExtResource("8_h6gf6")
 
 [connection signal="timeout" from="enemy_spawn_interval" to="." method="_on_enemy_spawn_interval_timeout"]
 [connection signal="timeout" from="Boss_timer" to="." method="_on_boss_timer_timeout"]

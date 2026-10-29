@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bmeu6a3vuyd0g"]
+
+[ext_resource type="Texture2D" uid="uid://dpvr04uacrqog" path="res://art/Untitled.jpg" id="1_0ettg"]
+[ext_resource type="Script" uid="uid://ctqtv64grq014" path="res://levels/main_menu.gd" id="1_duh7t"]
+
+[node name="Main Menu" type="Control" unique_id=2035614234]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_duh7t")
+
+[node name="Untitled" type="Sprite2D" parent="." unique_id=1137392651]
+modulate = Color(0.25275356, 0.25275356, 0.25275356, 1)
+position = Vector2(636.5, 252.50006)
+scale = Vector2(6.6030936, 4.0270276)
+texture = ExtResource("1_0ettg")
+
+[node name="Label" type="Label" parent="." unique_id=1431108637]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 35.0
+offset_right = 810.0
+offset_bottom = 172.0
+theme_override_font_sizes/font_size = 100
+text = "Stupid Project version
+0.0000000000001"
+
+[node name="Button" type="Button" parent="." unique_id=1473932330]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 314.0
+offset_right = 653.0
+offset_bottom = 398.0
+mouse_filter = 2
+button_mask = 0
+text = "Play"
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
