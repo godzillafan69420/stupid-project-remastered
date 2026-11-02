@@ -28,4 +28,7 @@ func _on_area_entered(area: Area2D) -> void:
 			identifier.item_types.power:
 				PlayerInv.player_power += 1
 				Eventbus.update_ui.emit()
+			identifier.item_types.gold:
+				PlayerInv.player_gold += 1
+				Eventbus.update_ui.emit()
 		queue_free()
