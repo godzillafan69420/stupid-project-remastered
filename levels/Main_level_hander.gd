@@ -22,11 +22,25 @@ func _ready() -> void:
 	enemy_spawner_timer = $enemy_spawn_interval
 	enemy_spawner_timer.wait_time = enemy_spawn_interval
 	Eventbus.start_the_boss_fight.connect(_beginning_fight)
+	Eventbus.delete_minions.connect(_delete_enemies)
+	Eventbus.delete_bullet.connect(_delete_bullet)
 	
 func _beginning_fight():
+	
 	current_state = states.boss
 	
 	
+func _delete_enemies():
+	for i in get_children():
+		if i.is_in_group("enemies"):
+			i.queue_free()
+			
+func _delete_bullet():
+	for i in get_children():
+		if i.is_in_group("enemy_bullet"):
+			i.queue_free()
+
+
 func _spawn_enemies_on_random():
 	if current_state != states.preboss: return
 	var new_enemy = enemy_pool[0].instantiate()
@@ -42,6 +56,8 @@ func _on_enemy_spawn_interval_timeout() -> void:
 
 
 func _on_boss_timer_timeout() -> void:
+	Eventbus.delete_bullet.emit()
+	Eventbus.delete_minions.emit()
 	current_state = states.dialogue
 	var new_boss = boss_scene.instantiate()
 	new_boss.position = Vector2(500,100)

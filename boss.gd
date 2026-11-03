@@ -42,6 +42,7 @@ func _process(delta: float) -> void:
 	if fight:
 		global_position = global_position.move_toward(random_position, speed * delta)
 	if hitpoint < 0:
+		Eventbus.delete_bullet.emit()
 		Eventbus.beaten_the_boss.emit()
 		queue_free()
 	

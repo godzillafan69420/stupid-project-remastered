@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bws5oo76mnom4" path="res://items/power_item.tscn" id="3_atllv"]
 [ext_resource type="PackedScene" uid="uid://dop0k6jsow6yq" path="res://enemies/red_balls.tscn" id="3_ue28p"]
 [ext_resource type="Script" uid="uid://bx2oyeqtok2ho" path="res://custom_resources/pattern_resource.gd" id="4_atllv"]
+[ext_resource type="PackedScene" uid="uid://dmqjnqy8b4ebf" path="res://items/gold.tscn" id="4_t4xt5"]
 [ext_resource type="Texture2D" uid="uid://dogpx1mor6pvx" path="res://art/vman.png" id="5_ue28p"]
 
 [sub_resource type="Resource" id="Resource_dvtim"]
@@ -20,7 +21,7 @@ size = Vector2(70, 95)
 [node name="v_mans" type="Area2D" unique_id=1331669204]
 script = ExtResource("1_g5tt5")
 enemy_stats = ExtResource("2_atllv")
-drops = Array[PackedScene]([ExtResource("3_atllv")])
+drops = Array[PackedScene]([ExtResource("3_atllv"), ExtResource("4_t4xt5")])
 active_pattern = SubResource("Resource_dvtim")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1786119438]

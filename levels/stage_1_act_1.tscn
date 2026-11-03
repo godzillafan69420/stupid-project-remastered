@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://q01vfct3jjle" path="res://player_stuff/timmy.tscn" id="1_gxk06"]
 [ext_resource type="Script" uid="uid://dqkoaystcqlv3" path="res://levels/Main_level_hander.gd" id="1_uabdg"]
-[ext_resource type="PackedScene" uid="uid://c17n51e08d3qj" path="res://enemies/enemies.tscn" id="2_gx214"]
+[ext_resource type="PackedScene" uid="uid://c17n51e08d3qj" path="res://enemies/vmangoon.tscn" id="2_gx214"]
 [ext_resource type="PackedScene" uid="uid://dqhobkjlruchu" path="res://enemies/boss.tscn" id="3_18v4t"]
 [ext_resource type="PackedScene" uid="uid://c1elrqbltem3u" path="res://levels/ui.tscn" id="5_rqckr"]
 [ext_resource type="Script" uid="uid://b8c5ow3bydc38" path="res://custom_resources/dialogue_resource.gd" id="5_yb3oa"]

@@ -5,3 +5,5 @@ signal update_ui
 signal start_the_boss_fight
 signal do_dialogue
 signal beaten_the_boss
+signal delete_bullet
+signal delete_minions

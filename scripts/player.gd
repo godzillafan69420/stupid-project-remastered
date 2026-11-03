@@ -98,6 +98,7 @@ func _on_shoot_interval_timeout() -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy_bullet"):
+		Eventbus.delete_bullet.emit()
 		PlayerInv.player_HP -= 1
 		position = Vector2(570,570)
 		if PlayerInv.player_HP == 0:

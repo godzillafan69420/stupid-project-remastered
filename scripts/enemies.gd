@@ -12,6 +12,7 @@ var playable_player
 
 @export var patterns: bool = false
 
+
 var dying: bool = false
 
 func _ready() -> void:
