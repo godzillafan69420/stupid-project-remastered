@@ -2,10 +2,17 @@
 
 [ext_resource type="Script" uid="uid://tati153l58i" path="res://scripts/player.gd" id="1_fp3om"]
 [ext_resource type="Script" uid="uid://cj05r8lefthbf" path="res://custom_resources/player_resource.gd" id="2_43wku"]
+[ext_resource type="PackedScene" uid="uid://c6vw0onlo1c7b" path="res://player_stuff/bomb.tscn" id="2_j0vii"]
+[ext_resource type="Script" uid="uid://iacokmucooll" path="res://custom_resources/bomb_resource.gd" id="2_yld6y"]
 [ext_resource type="PackedScene" uid="uid://cn2m6qcabaloy" path="res://player_stuff/knife.tscn" id="3_43wku"]
 [ext_resource type="Script" uid="uid://foo2sxay73e2" path="res://custom_resources/weapon_data.gd" id="3_ajkmv"]
 [ext_resource type="Texture2D" uid="uid://c3vseffuu7jnn" path="res://art/timmy.png" id="4_43wku"]
 [ext_resource type="Texture2D" uid="uid://blekrb2bhcn2u" path="res://art/red_hitbox.png" id="5_ajkmv"]
+
+[sub_resource type="Resource" id="Resource_skakj"]
+script = ExtResource("2_yld6y")
+bomb_instantiate = ExtResource("2_j0vii")
+metadata/_custom_type_script = "uid://iacokmucooll"
 
 [sub_resource type="Resource" id="Resource_ajkmv"]
 script = ExtResource("3_ajkmv")
@@ -43,6 +50,8 @@ metadata/_custom_type_script = "uid://foo2sxay73e2"
 script = ExtResource("2_43wku")
 speed = 500
 slowing_down_speed = 200
+bomb_stats = SubResource("Resource_skakj")
+bomb_cost = 20
 upgrades = Array[ExtResource("3_ajkmv")]([SubResource("Resource_ajkmv"), SubResource("Resource_x3er5"), SubResource("Resource_j0vii"), SubResource("Resource_yld6y")])
 metadata/_custom_type_script = "uid://cj05r8lefthbf"
 
@@ -66,6 +75,10 @@ texture = ExtResource("4_43wku")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_box" unique_id=453743991]
 shape = SubResource("CircleShape2D_ot6j1")
 
+[node name="Invincibility" type="Timer" parent="." unique_id=1920486557]
+wait_time = 5.0
+one_shot = true
+
 [node name="shoot interval" type="Timer" parent="." unique_id=1267233232 groups=["player_bullet"]]
 
 [node name="hit_box_viewer" type="Sprite2D" parent="." unique_id=1662443955]
@@ -79,4 +92,5 @@ texture = ExtResource("5_ajkmv")
 shape = SubResource("CircleShape2D_tsvnc")
 
 [connection signal="area_entered" from="hurt_box" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Invincibility" to="." method="_on_invincibility_timeout"]
 [connection signal="timeout" from="shoot interval" to="." method="_on_shoot_interval_timeout"]

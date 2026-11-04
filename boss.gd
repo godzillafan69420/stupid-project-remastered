@@ -88,6 +88,9 @@ func _on_frequency_timeout() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("bombs")and fight:
+		hitpoint -= area.bullet_stats.damage
+		area.queue_free()
 	if area.is_in_group("player_bullet") and fight:
 		
 		hitpoint -= area.bullet_stats.damage

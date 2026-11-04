@@ -10,6 +10,8 @@ var can_shoot: bool = true
 const BULLET_SPAWN_OFFSET: Vector2 = Vector2(0,-44)
 var weapon: weapon_level_data 
 
+var invincible: bool = false
+
 func _ready() -> void:
 	weapon= player_stats.upgrades[0]
 	current_speed = player_stats.speed
@@ -24,6 +26,11 @@ func _process(delta: float) -> void:
 	else:
 		$hit_box_viewer.visible = false
 		current_speed = player_stats.speed
+		
+	if Input.is_action_just_pressed("bomb") and PlayerInv.player_power >= player_stats.bomb_cost:
+		PlayerInv.player_power -=player_stats.bomb_cost
+		Eventbus.update_ui.emit()
+		_bomb()
 	var directionX = Input.get_axis("left", "right")
 	if directionX ==1 and position.x > 950:
 		position.x = 950
@@ -91,13 +98,18 @@ func _shoot(weapon: weapon_level_data) -> void:
 	can_shoot = false
 	
 
-
+func _bomb():
+	for i in range(player_stats.bomb_stats.no_bombs):
+		var new_bomb = player_stats.bomb_stats.bomb_instantiate.instantiate()
+		new_bomb.position = position + Vector2(randf_range(-player_stats.bomb_stats.randomness,player_stats.bomb_stats.randomness),randf_range(-player_stats.bomb_stats.randomness,player_stats.bomb_stats.randomness))
+		new_bomb.add_to_group("bombs")
+		get_parent().add_child(new_bomb)
 func _on_shoot_interval_timeout() -> void:
 	can_shoot = true
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.is_in_group("enemy_bullet"):
+	if area.is_in_group("enemy_bullet") and not invincible:
 		Eventbus.delete_bullet.emit()
 		PlayerInv.player_HP -= 1
 		position = Vector2(570,570)
@@ -105,3 +117,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			get_tree().change_scene_to_file("res://levels/died.tscn")
 		Eventbus.update_ui.emit()
 		
+
+
+func _on_invincibility_timeout() -> void:
+	invincible = false

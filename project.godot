@@ -44,6 +44,7 @@ enemies=""
 enemy_bullet=""
 player=""
 player_collection_system=""
+bombs=""
 
 [input]
 

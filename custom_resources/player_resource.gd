@@ -3,7 +3,7 @@ class_name player
 
 @export var speed:int 
 @export var slowing_down_speed:int 
-@export var bomb: PackedScene
+@export var bomb_stats: bomb
 @export var bomb_cost:int 
 
 @export var upgrades: Array[weapon_level_data] = []

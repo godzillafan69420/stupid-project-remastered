@@ -18,7 +18,7 @@ metadata/_custom_type_script = "uid://bx2oyeqtok2ho"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ot6j1"]
 size = Vector2(70, 95)
 
-[node name="v_mans" type="Area2D" unique_id=1331669204]
+[node name="v_mans" type="Area2D" unique_id=1331669204 groups=["bombs"]]
 script = ExtResource("1_g5tt5")
 enemy_stats = ExtResource("2_atllv")
 drops = Array[PackedScene]([ExtResource("3_atllv"), ExtResource("4_t4xt5")])
