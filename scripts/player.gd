@@ -27,8 +27,8 @@ func _process(delta: float) -> void:
 		$hit_box_viewer.visible = false
 		current_speed = player_stats.speed
 		
-	if Input.is_action_just_pressed("bomb") and PlayerInv.player_power >= player_stats.bomb_cost:
-		PlayerInv.player_power -=player_stats.bomb_cost
+	if Input.is_action_just_pressed("bomb") and PlayerInv.player_bombs >= player_stats.bomb_cost:
+		PlayerInv.player_bombs -=player_stats.bomb_cost
 		Eventbus.update_ui.emit()
 		_bomb()
 	var directionX = Input.get_axis("left", "right")

@@ -51,7 +51,7 @@ script = ExtResource("2_43wku")
 speed = 500
 slowing_down_speed = 200
 bomb_stats = SubResource("Resource_skakj")
-bomb_cost = 20
+bomb_cost = 1
 upgrades = Array[ExtResource("3_ajkmv")]([SubResource("Resource_ajkmv"), SubResource("Resource_x3er5"), SubResource("Resource_j0vii"), SubResource("Resource_yld6y")])
 metadata/_custom_type_script = "uid://cj05r8lefthbf"
 

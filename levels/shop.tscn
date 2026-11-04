@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://cyn45t8dafgrj"]
+
+[ext_resource type="Script" uid="uid://80c1sf6amdlw" path="res://scripts/shop.gd" id="1_xjhc7"]
+
+[node name="shop" type="Control" unique_id=1300031546]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xjhc7")
+
+[node name="Bomb_label" type="Label" parent="." unique_id=400499452]
+layout_mode = 0
+offset_left = 962.0
+offset_top = 45.0
+offset_right = 1273.0
+offset_bottom = 105.0
+theme_override_font_sizes/font_size = 40
+text = "temp"
+
+[node name="Power_label" type="Label" parent="." unique_id=1678730976]
+layout_mode = 0
+offset_left = 962.0
+offset_top = 92.0
+offset_right = 1273.0
+offset_bottom = 152.0
+theme_override_font_sizes/font_size = 40
+text = "temp"
+
+[node name="Health_label" type="Label" parent="." unique_id=102022474]
+layout_mode = 0
+offset_left = 963.0
+offset_top = 149.0
+offset_right = 1274.0
+offset_bottom = 209.0
+theme_override_font_sizes/font_size = 40
+text = "temp"
+
+[node name="Gold_label" type="Label" parent="." unique_id=265803451]
+layout_mode = 0
+offset_left = 967.0
+offset_top = 203.0
+offset_right = 1278.0
+offset_bottom = 263.0
+theme_override_font_sizes/font_size = 40
+text = "temp"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1164067166]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 338.0
+offset_right = 1242.0
+offset_bottom = 556.0
+
+[node name="bombs" type="Button" parent="HBoxContainer" unique_id=187341153]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Bomb - 25 souls"
+
+[node name="power" type="Button" parent="HBoxContainer" unique_id=1731424202]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+text = "15 power - 10 souls"
+
+[node name="Health" type="Button" parent="HBoxContainer" unique_id=2119268082]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+text = "1 HP - 50"
+
+[node name="Container" type="Container" parent="HBoxContainer" unique_id=232915220]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Next" type="Button" parent="HBoxContainer" unique_id=399193155]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+text = "Next"
+
+[connection signal="button_down" from="HBoxContainer/bombs" to="." method="_on_bombs_button_down"]
+[connection signal="button_down" from="HBoxContainer/power" to="." method="_on_power_button_down"]
+[connection signal="button_down" from="HBoxContainer/Health" to="." method="_on_health_button_down"]
+[connection signal="button_down" from="HBoxContainer/Next" to="." method="_on_next_button_down"]
