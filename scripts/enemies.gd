@@ -36,9 +36,9 @@ func _process(delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bombs"):
 		for i in drops:
-				var new_item = i.instantiate()
-				new_item.position = position + Vector2(randf_range(-100, 100),randf_range(-100, 100))
-				get_parent().add_child(new_item)
+			var new_item = i.instantiate()
+			new_item.position = position + Vector2(randf_range(-100, 100),randf_range(-100, 100))
+			get_parent().add_child.call_deferred(new_item)
 		queue_free()
 	if area.is_in_group("player_bullet"):
 		

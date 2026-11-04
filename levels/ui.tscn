@@ -81,6 +81,22 @@ offset_right = 76.0
 offset_bottom = 310.0
 text = "0/100"
 
+[node name="Soul_label" type="Label" parent="TextureRect" unique_id=1717419945]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 307.0
+offset_right = 125.0
+offset_bottom = 330.0
+text = "Soul Collected"
+
+[node name="souls" type="Label" parent="TextureRect" unique_id=284754805]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 330.0
+offset_right = 75.0
+offset_bottom = 353.0
+text = "0/100"
+
 [node name="FPS" type="Label" parent="TextureRect" unique_id=436246269]
 layout_mode = 0
 offset_left = 237.0

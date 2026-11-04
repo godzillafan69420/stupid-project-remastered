@@ -1,11 +1,12 @@
 extends Control
 
 @onready var health = $TextureRect/Health
-@onready var bomb = $TextureRect/bomb
+@onready var bomb_display = $TextureRect/bomb
 @onready var power = $"TextureRect/power"
 @onready var boss_timer_dis = $TextureRect/boss_timer_display
 @onready var money = $TextureRect/Health
 @onready var dialogue_interface = $dialogue_interface
+@onready var souls = $TextureRect/souls
 
 @onready var boss_bar = $boss_hp
 
@@ -30,7 +31,7 @@ func _ready() -> void:
 	Eventbus.beaten_the_boss.connect(_show_next_level)
 	
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	boss_timer_dis.text = str(int(boss_timer.time_left))
 	$TextureRect/FPS.text = str(Engine.get_frames_per_second())
 	if get_parent().current_state == get_parent().states.boss and boss_node != null:
@@ -58,7 +59,7 @@ func _change_ui()-> void:
 		PlayerInv.player_power = 100
 	for child in health.get_children():
 		child.queue_free()
-	for child in bomb.get_children():
+	for child in bomb_display.get_children():
 		child.queue_free()
 	for i in range(PlayerInv.player_HP-1):
 		var new_display = TextureRect.new()
@@ -67,9 +68,9 @@ func _change_ui()-> void:
 	for i in range(PlayerInv.player_bombs-1):
 		var new_display = TextureRect.new()
 		new_display.texture = icon
-		bomb.add_child(new_display)
+		bomb_display.add_child(new_display)
 	power.text = str(PlayerInv.player_power)+ "/100"
-	
+	souls.text = str(PlayerInv.player_gold)
 
 	
 	
