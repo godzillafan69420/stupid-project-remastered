@@ -6,10 +6,10 @@ func _ready() -> void:
 	
 
 func _update_ui():
-	$Bomb_label.text = str(PlayerInv.player_bombs)
-	$Power_label.text = str(PlayerInv.player_power)
-	$Health_label.text = str(PlayerInv.player_HP)
-	$Gold_label.text = str(PlayerInv.player_gold)
+	$Bomb_label.text = "Bombs: " + str(PlayerInv.player_bombs)
+	$Power_label.text = "Power: " +str(PlayerInv.player_power)
+	$Health_label.text = "Health: " +str(PlayerInv.player_HP)
+	$Gold_label.text = "Gold: " +str(PlayerInv.player_gold)
 func _on_bombs_button_down() -> void:
 	if PlayerInv.player_gold >= 25 and PlayerInv.player_bombs <= 10:
 		PlayerInv.player_gold -= 25

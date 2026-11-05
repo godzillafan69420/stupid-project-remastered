@@ -1,5 +1,8 @@
 extends Node
 
+enum characters {John, Jimmy, Katherine, Mango, Ray, Gojo }
+
+
 var player_character_choice: String
 var shot_type: int
 
