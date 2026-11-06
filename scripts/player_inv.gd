@@ -1,9 +1,9 @@
 extends Node
 
-enum characters {John, Jimmy, Katherine, Mango, Ray, Gojo }
+enum characters {John, Jimmy, Katherine, Mango, Ray, Gojo}
 
 
-var player_character_choice: String
+var player_character_choice: characters
 var shot_type: int
 
 var player_HP: int = 3
